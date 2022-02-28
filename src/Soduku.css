@@ -44,6 +44,15 @@ input:focus {
   caret-color: transparent;
 }
 
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .hightlight_right_border {
   border-right: 1px solid var(--secondary-color);
 }

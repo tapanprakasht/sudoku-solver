@@ -18,6 +18,12 @@ function Soduku() {
       }
   }
 
+  const restrictInput = (event) => {
+    if (event.key === '.' || event.key === 'e' || event.key === 'E') {
+      event.preventDefault();
+    }
+  }
+
   const startSolvingSoduku = () => {
     if(!solveSodoku()) {
       setNoSolution(true);
@@ -41,9 +47,11 @@ function Soduku() {
                   row.map((item, colIndex) => {
                     const rightBorder = colIndex === 2 || colIndex === 5 ? 'hightlight_right_border' : '';
                     const leftBorder = colIndex === 3 || colIndex === 6 ? 'hightlight_left_border' : '';
-                    return <input type="text"
+                    return <input type="number"
+                                  min="1" max="9" step="1"
                                   className={`box ${rightBorder} ${bottomborder} ${leftBorder} ${topBorder}`}
-                                  onChange={(e) => onChangeInputItem(e.target.value, rowIndex, colIndex)}
+                                  onKeyPress={restrictInput}
+                                  onInput={(e) => onChangeInputItem(e.target.value, rowIndex, colIndex)}
                                   value={item}
                                   key={colIndex}/>
                   })
