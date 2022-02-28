@@ -93,3 +93,7 @@ button {
 button:hover {
   background: var(--background-secondary);
 }
+
+.result_container {
+  height: 20px;
+}

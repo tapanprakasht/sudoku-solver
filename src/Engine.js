@@ -66,5 +66,28 @@ export const useEngine = (gameBoard) => {
         }
         return false;
     }
-    return solveSodoku;
+
+    const validateSudoku = () => {
+      const rowSets = Array(9).fill().map(() => new Set());
+      const colSets = Array(9).fill().map(() => new Set());
+      const gridSets = Array(9).fill().map(() => new Set());
+
+      // input validation
+      for(let row = 0; row < GRID_SIZE; row++) {
+        for(let col = 0; col < GRID_SIZE; col++) {
+          const currentNum = board[row][col];
+          if(currentNum !== '') {
+            if(rowSets[row].has(currentNum)) return false;
+            if(colSets[col].has(currentNum)) return false;
+            const gridIndex = Math.floor(row/3) * 3 + Math.floor(col/3);
+            if(gridSets[gridIndex].has(currentNum)) return false;
+            rowSets[row].add(currentNum);
+            colSets[col].add(currentNum);
+            gridSets[gridIndex].add(currentNum);
+          }
+        }
+      }
+      return true;
+    }
+    return [solveSodoku, validateSudoku];
 }
