@@ -4,7 +4,7 @@ const GRID_SIZE = 9;
 const SUB_GRID_SIZE = 3;
 
 export const useEngine = (gameBoard) => {
-    const [board, setBoard] = useState(gameBoard);
+    const [board, resetBoard] = useState(gameBoard);
     const solveSodoku = () => {
         let row = 0, col = 0;
         let isPuzzleCompleted = true;
@@ -24,13 +24,13 @@ export const useEngine = (gameBoard) => {
           if(isValidSudoku(row, col, num.toString())) {
             const newBoard = Array.from(board);
             newBoard[row][col] = num.toString();
-            setBoard(newBoard);
+            resetBoard(newBoard);
             if(solveSodoku()) {
               return true;
             }
             const resetedBoard = Array.from(board);
             resetedBoard[row][col] = '';
-            setBoard(resetedBoard);
+            resetBoard(resetedBoard);
           }
         }
     }
@@ -89,5 +89,5 @@ export const useEngine = (gameBoard) => {
       }
       return true;
     }
-    return [solveSodoku, validateSudoku];
+    return [solveSodoku, validateSudoku, resetBoard];
 }

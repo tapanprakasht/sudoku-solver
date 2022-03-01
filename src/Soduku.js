@@ -6,7 +6,7 @@ import './Soduku.css';
 function Soduku() {
   const [board, setBoard] = useState(Array.from(Array(9), () => new Array(9).fill('')))
   const [nosolution, setNoSolution] = useState(false);
-  const [solveSodoku, isValidSudoku] = useEngine(board);
+  const [solveSodoku, isValidSudoku, resetBoard] = useEngine(board);
 
   const onChangeInputItem = (value, row, col) => {
       const intValue = parseInt(value);
@@ -29,6 +29,12 @@ function Soduku() {
     if(!isValidSudoku() || !solveSodoku()) {
       setNoSolution(true);
     }
+  }
+
+  const onClickClear = () => {
+    const newBoard = Array.from(Array(9), () => new Array(9).fill(''));
+    setBoard(newBoard);
+    resetBoard(newBoard);
   }
 
   return (
@@ -64,6 +70,7 @@ function Soduku() {
      </div>
      <div className='button_contianer'>
        <button onClick={startSolvingSoduku}>SOLVE</button>
+       <button onClick={onClickClear}>CLEAR</button>
      </div>
      <div className='result_container'>
        { nosolution && <span>No solution exist</span> }
