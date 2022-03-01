@@ -111,3 +111,10 @@ button:hover {
     height: 40px;
   }
 }
+
+@media screen and (max-width: 400px){
+  .box {
+    width: 35px;
+    height: 35px;
+  }
+}
