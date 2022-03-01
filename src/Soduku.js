@@ -43,7 +43,7 @@ function Soduku() {
             const bottomborder = rowIndex === 2 || rowIndex === 5 ? 'hightlight_bottom_border' : '';
             const topBorder = rowIndex === 3 || rowIndex === 6 ? 'hightlight_top_border' : '';
             return (
-              <div key={rowIndex}>
+              <div className='row_style' key={rowIndex}>
                 {
                   row.map((item, colIndex) => {
                     const rightBorder = colIndex === 2 || colIndex === 5 ? 'hightlight_right_border' : '';

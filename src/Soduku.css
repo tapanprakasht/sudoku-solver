@@ -26,6 +26,11 @@
   padding: 15px 0;
 }
 
+.row_style {
+  display: flex;
+  flex-direction: row;
+}
+
 .box {
   display: inline-block;
   font-family: var(--font-family);
@@ -96,4 +101,13 @@ button:hover {
 
 .result_container {
   height: 20px;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 600px){
+  .box {
+    width: 40px;
+    height: 40px;
+  }
 }
