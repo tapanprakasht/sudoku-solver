@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Soduku from './Soduku';
+import Sudoku from './Sudoku';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Soduku />
+    <Sudoku />
   </React.StrictMode>,
   document.getElementById('root')
 );

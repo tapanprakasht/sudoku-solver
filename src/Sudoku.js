@@ -1,9 +1,9 @@
 
 import { useState } from 'react';
 import { useEngine } from './Engine';
-import './Soduku.css';
+import './Sudoku.css';
 
-function Soduku() {
+function Sudoku() {
   const [board, setBoard] = useState(Array.from(Array(9), () => new Array(9).fill('')))
   const [nosolution, setNoSolution] = useState(false);
   const [solveSodoku, isValidSudoku, resetBoard] = useEngine(board);
@@ -42,7 +42,7 @@ function Soduku() {
      <h1 className='heading'>
         SUDOKU SOLVER
      </h1>
-     <h4 className='subheading'>Fill your sodoku puzzle here</h4>
+     <h4 className='subheading'>Fill your Sudoku puzzle here</h4>
      <div className='board_container'>
         {
           board.map((row, rowIndex) => {
@@ -79,7 +79,7 @@ function Soduku() {
   );
 }
 
-export default Soduku;
+export default Sudoku;
 
 
 
